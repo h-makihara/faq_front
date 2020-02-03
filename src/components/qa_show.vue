@@ -2,49 +2,49 @@
   <div class="qaDetailShow">
     <nav class="navbar navbar-light bg-light">
       <a class="navbar-brand" >FAQ 詳細画面</a>
-		</nav>
-		<table id='qaDetail' class='table table-hover'>
-			<thead class="thead-dark">
-				<tbody v-for="(qa, index) in qajson" :key="index">
-					<div v-if="qa.QID===qid">
-						<tr>
-							<th>
-								Question
-							</th>
-							<td>
-								{{ qa.question}}
-							</td>
-						</tr>
-						<tr>
-							<th>
-								Answer
-							</th>
-							<td>
-								{{ qa.answer}}
-							</td>
-						</tr>
-						<tr>
-							<th>
-								Service
-							</th>
-							<td>
-								{{ qa.service_name}}
-							</td>
-						</tr>
-						<tr>
-							<th>
-								Tags
-							</th>
-							<td>
-								<span v-for="(tag, index) in qa.tags" :key="index">
-									{{ tag }} <br />
-								</span>
-							</td>
-						</tr>
-					</div>
-				</tbody>
-			</thead>
-		</table>
+    </nav>
+    <table id='qaDetail' class='table table-hover'>
+      <thead class="thead-dark">
+        <tbody v-for="(qa, index) in qajson" :key="index">
+          <div v-if="qa.QID===qid">
+            <tr>
+              <th>
+                Question
+              </th>
+              <td>
+                {{ qa.question}}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Answer
+              </th>
+              <td>
+                {{ qa.answer}}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Service
+              </th>
+              <td>
+                {{ qa.service_name}}
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Tags
+              </th>
+              <td>
+                <span v-for="(tag, index) in qa.tags" :key="index">
+                  {{ tag }} <br />
+                </span>
+              </td>
+            </tr>
+          </div>
+        </tbody>
+      </thead>
+    </table>
   </div>
 </template>
 
