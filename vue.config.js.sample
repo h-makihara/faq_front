@@ -1,0 +1,15 @@
+module.exports = {
+    devServer: {
+        public: "yourHost",
+        port: yourContainerPort,
+        disableHostCheck: true,
+        proxy: {
+            "/faq": {
+                target: "http://api-hostname:portnum",
+            },
+        },
+        watchOptions: {
+            poll: true
+        }
+    },
+};
