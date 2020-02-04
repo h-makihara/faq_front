@@ -28,16 +28,16 @@
             <router-link class="nav-item nav-link" to="/about">About</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-item nav-link" to="/search">Search</router-link>
+            <router-link class="nav-item nav-link" to="/search">Bootstrap</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-item nav-link" to="/search2">Search2</router-link>
+            <router-link class="nav-item nav-link" to="/search2">Bootstrap card</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-item nav-link" to="/search3">Search3</router-link>
+            <router-link class="nav-item nav-link" to="/search3">Vue Material Table</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-item nav-link" to="/search4">Search4</router-link>
+            <router-link class="nav-item nav-link" to="/search4">Vue Matedrlal Card</router-link>
           </li>
           <li class="nav-item">
             <router-link class="nav-item nav-link" to="/create">Create</router-link>

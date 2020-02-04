@@ -1,21 +1,22 @@
 <template>
   <div class="qaSearch">
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" >FAQ Search</a>
-      <form class="form-inline" @submit.prevent="exec">
-        <input  v-on:keymap.enter="setWord()"
+    <md-toolbar>
+      <h3 class="md-title" style="flex: 1">
+        FAQ Search in Vue Material
+      </h3>
+    </md-toolbar>
+
+    <md-field>
+      <label>
+        Search Word
+      </label>
+      <md-input type="text"
                 v-model="word"
-                class="form-control mr-sm-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0"
-                type="submit"
-                @click="setWord()">
-          Search
-        </button>
-      </form>
-    </nav>
+                v-on:keymap.enter="setWord()">
+      </md-input>
+
+    </md-field>
+
     <qaList :sWord='sWord'></qaList>
   </div>
 </template>
@@ -63,5 +64,9 @@ td {
   text-align:center;
   white-space: pre-line;
   word-wrap: break-word;
+}
+
+.md-toolbar {
+  text-align: left;
 }
 </style>
