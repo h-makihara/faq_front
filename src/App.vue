@@ -13,31 +13,38 @@
         </button>
 
       <a class="navbar-brand" href="#!">FAQ Tools</a>
-				<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-					<ul class="navbar-nav mr-auto mt-2 mt-md-0">
-						<li class="nav-item active">
-							<router-link class="nav-item nav-link" to="/">
-								Home
-								<span class="sr-only">
-									(current)
-								</span>
-							</router-link>
-						</li>
-						<li class="nav-item">
-							<router-link class="nav-item nav-link" to="/about">About</router-link>
-						</li>
-						<li class="nav-item">
-							<router-link class="nav-item nav-link" to="/search">Search</router-link>
-						</li>
-						<li class="nav-item">
-							<router-link class="nav-item nav-link" to="/search2">Search2</router-link>
-						</li>
-						<li class="nav-item">
-							<router-link class="nav-item nav-link" to="/create">Create</router-link>
-						</li>
-					</ul>
-				</div>
-			</nav>
+
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+          <li class="nav-item active">
+            <router-link class="nav-item nav-link" to="/">
+              Home
+              <span class="sr-only">
+                (current)
+              </span>
+            </router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/about">About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/search">Search</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/search2">Search2</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/search3">Search3</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/search4">Search4</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/create">Create</router-link>
+          </li>
+        </ul>
+      </div>
+      </nav>
     </div>
     <router-view/>
   </div>

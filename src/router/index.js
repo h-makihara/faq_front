@@ -5,18 +5,21 @@ import FAQ from '../views/FAQ.vue'
 import FAQCreate from '../views/faq_create.vue'
 import About from '../views/About.vue'
 import faqViewTest from '../views/view_test.vue'
+import materialTable from '../views/material_table.vue'
+import materialCard from '../views/material_card.vue'
 Vue.use(VueRouter)
 import VModal from 'vue-js-modal'
 Vue.use(VModal)
+
+// bootstrap
 import 'bootstrap'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-/*
+// Vue Material
 import VueMaterial from 'vue-material'
 import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 Vue.use(VueMaterial)
-*/
 
 const routes = [
   {
@@ -46,6 +49,16 @@ const routes = [
     path: '/search2',
     name: 'FAQ Tool2',
     component: faqViewTest
+  },
+  {
+    path: '/search3',
+    name: 'Vue Material Table',
+    component: materialTable
+  },
+  {
+    path: '/search4',
+    name: 'Vue Material Card',
+    component: materialCard
   },
   {
     path: '/create',
