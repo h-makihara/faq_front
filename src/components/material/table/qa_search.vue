@@ -1,9 +1,9 @@
 <template>
   <div class="qaSearch">
     <md-toolbar>
-      <h3 class="md-title" style="flex: 1">
+      <h4 class="md-title" style="flex: 1">
         FAQ Search in Vue Material
-      </h3>
+      </h4>
     </md-toolbar>
 
     <md-field>
@@ -12,9 +12,8 @@
       </label>
       <md-input type="text"
                 v-model="word"
-                v-on:keymap.enter="setWord()">
+                v-on:keyup.enter="setWord()">
       </md-input>
-
     </md-field>
 
     <qaList :sWord='sWord'></qaList>
@@ -28,7 +27,6 @@ import Vue from 'vue'
 import qaList from '@/components/material/table/qa_list.vue'
 /* eslint-enable */
 
-
 export default {
   name: 'qaSearch',
   components: {
@@ -40,11 +38,13 @@ export default {
       text: '',
       sWord: '',
       word: '',
+      message : ''
     }
   },
   methods: {
     setWord: function(){
       this.sWord=this.word
+      console.log("set word is ", this.word)
     }
   }
 }
