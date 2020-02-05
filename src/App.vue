@@ -40,6 +40,9 @@
             <router-link class="nav-item nav-link" to="/search4">Vue Matedrlal Card</router-link>
           </li>
           <li class="nav-item">
+            <router-link class="nav-item nav-link" to="/faq-detail">FAQ Detail</router-link>
+          </li>
+          <li class="nav-item">
             <router-link class="nav-item nav-link" to="/create">Create</router-link>
           </li>
         </ul>

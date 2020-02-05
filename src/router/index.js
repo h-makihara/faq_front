@@ -1,12 +1,17 @@
+// Default import
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import FAQ from '../views/FAQ.vue'
-import FAQCreate from '../views/faq_create.vue'
 import About from '../views/About.vue'
+
+// custom import
+import FAQ from '../views/FAQ.vue'
 import faqViewTest from '../views/view_test.vue'
 import materialTable from '../views/material_table.vue'
 import materialCard from '../views/material_card.vue'
+import faqDetail from '../views/faq_detail.vue'
+import FAQCreate from '../views/faq_create.vue'
+
 Vue.use(VueRouter)
 import VModal from 'vue-js-modal'
 Vue.use(VModal)
@@ -59,6 +64,11 @@ const routes = [
     path: '/search4',
     name: 'Vue Material Card',
     component: materialCard
+  },
+  {
+    path: '/faq-detail',
+    name: 'FAQ Detail',
+    component: faqDetail
   },
   {
     path: '/create',
