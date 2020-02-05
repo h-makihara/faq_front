@@ -66,7 +66,7 @@ const routes = [
     component: materialCard
   },
   {
-    path: '/faq-detail',
+    path: '/faqdetail',
     name: 'FAQ Detail',
     component: faqDetail
   },
