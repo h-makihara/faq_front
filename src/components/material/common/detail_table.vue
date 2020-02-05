@@ -1,13 +1,12 @@
 <template>
   <div class="dTable">
-    {{qajson}}
     <md-table>
       <md-table-row>
         <md-table-head>
           Question
         </md-table-head>
         <md-table-cell>
-          {{dQuestion}}
+          {{qajson.QID}}
         </md-table-cell>
       </md-table-row>
       <md-table-row>
@@ -15,7 +14,7 @@
           Answer
         </md-table-head>
         <md-table-cell>
-          {{dAnswer}}
+          {{qajson.answer}}
         </md-table-cell>
       </md-table-row>
       <md-table-row>
@@ -23,7 +22,7 @@
           Tag
         </md-table-head>
         <md-table-cell>
-          <span v-for="(tag, index) in dTags" :key="index">
+          <span v-for="(tag, index) in qajson.tag" :key="index">
             {{tag}}
           </span>
         </md-table-cell>
@@ -52,7 +51,7 @@ export default {
     return {
       dQuestion: '',
       dAnswer: '',
-      dUpdateAt: '',
+      dUpdateAt: '3 minites age',
       dTags: [],
     }
   },

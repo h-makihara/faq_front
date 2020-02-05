@@ -15,7 +15,6 @@
                 v-on:keyup.enter="setQID()">
       </md-input>
     </md-field>
-
     <dTable :qajson='qajson'></dTable>
 
   </div>
@@ -40,12 +39,13 @@ export default {
       service : 'Mail',
       text: '',
       qid: '',
-      qajson: '',
+      qajson: {},
       message : '',
       dQuestion: '',
       dAnswer: '',
       dUpdateAt: '',
       dTags: [],
+      json: {'QID': 1, 'test': 'hogehoge'},
     }
   },
   methods: {
@@ -54,9 +54,8 @@ export default {
       console.log("set qid is ", this.qid)
       axios
         .get('/faq/qa/' + this.qid)
-        .then(response => {this.qajson = response.data,
-            this.dQuestion = response.data.QID});
-
+        .then(response => {this.qajson = response.data});
+        console.log('type of data is ', typeof(this.qajson))
       this.dAnswer = this.qajson.answer;
     }
   }
