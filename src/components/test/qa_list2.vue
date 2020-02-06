@@ -85,6 +85,7 @@ export default {
       modal_a : '',
       modal_s : '',
       modal_id : 0,
+      modal_tags : [],
       modal_view: false,
     }
   },

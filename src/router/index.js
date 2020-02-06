@@ -66,15 +66,15 @@ const routes = [
     component: materialCard
   },
   {
-    path: '/faqdetail',
-    name: 'FAQ Detail',
-    component: faqDetail
-  },
-  {
     path: '/create',
     name: 'FAQ Create',
     component: FAQCreate
-  }
+  },
+  {
+    path: '/detail',
+    name: 'FAQ Detail',
+    component: faqDetail
+  },
 ]
 /* eslint-disable */
 const router = new VueRouter({

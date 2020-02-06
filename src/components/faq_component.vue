@@ -2,10 +2,9 @@
   <div class="show">
 
     <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#!">{{ faq_msg }}</a>
+      {{ faq_msg }}
     </nav>
 
-    {{ results }}
   </div>
 </template>
 

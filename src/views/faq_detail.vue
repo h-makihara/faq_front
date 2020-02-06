@@ -1,17 +1,17 @@
 <template>
-  <div class="Detail">
-    <qaSearch></qaSearch>
+  <div class="detail">
+    <dShow></dShow>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import qaSearch from '@/components/material/common/detail_show.vue'
+import dShow from '@/components/material/common/detail_show.vue'
 
 export default {
-  name: 'Detail',
+  name: 'detail',
   components: {
-    qaSearch,
+    dShow,
   }
 }
 </script>

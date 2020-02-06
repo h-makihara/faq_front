@@ -52,10 +52,10 @@
 
 export default {
   name: 'qaDetailShow',
-	props: [
-		'qid',
-		'qajson'
-	],
+  props: [
+    'qid',
+    'qajson'
+  ],
   data () {
     return {
     }

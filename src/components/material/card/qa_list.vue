@@ -1,57 +1,72 @@
 <template>
   <div class="qaListShow">
-    このファイルは画面比較用テストファイルです
     <div id='app'>
       <p>get word is {{ sWord }}</p>
       <div class="bv-example-row"
            v-for="(qa, index) in qajson"
            :key="index"
            style="width: 20rem;">
-              <!---
-        <div class="card" data-toggle="modal" data-target="#exampleModal">
-              --->
         <div class="card-deck" v-on:click="show(qa)">
           <div class="card-body">
-            <h5 class="card-header bg-transparent">Q. {{qa.question}}</h5>
+            <h5 class="card-header bg-transparent">
+              Q. {{qa.question}}
+            </h5>
             <div class="card-body text-primary">
-              <p class="card-text">A.<br /> {{ qa.answer }}</p>
+              <p class="card-text">
+                A.<br />
+                {{ qa.answer }}
+              </p>
             </div>
             <div class="card-footer bg-transparent border-success">
-              <h6 class="card-title">service: {{qa.service_name}}</h6>
-              <small class="text-muted">Last updated 3 mins ago</small>
-              <!---
-              <a href="#" class="card-link">Another link</a>
-              --->
+              <h6 class="card-title">
+                service: {{qa.service_name}}
+              </h6>
+              <small class="text-muted">
+                Last updated 3 mins ago
+              </small>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- modal window -->
       <modal height="auto"
              :scrollable="true"
-             name="hello-world"
+             name="qa-modal"
              :draggable="true"
              :resizable="true"
              @before-open="beforeOpen">
         <div class="modal-header">
-          <h2>Question : {{modal_q}}</h2>
+          <h2>
+            Question : {{modal_q}}
+          </h2>
         </div>
         <div class="modal-body">
-          <p>A: <br />{{modal_a}}</p>
-          <small>Service: {{modal_s}}</small><br />
-          <small>QID: {{modal_id}}</small><br />
-          <small>Tags:
+          <p>
+            A: <br />
+            {{modal_a}}
+          </p>
+          <small>
+            Service: {{modal_s}}
+          </small>
+          <br />
+          <small>
+            QID: {{modal_id}}
+          </small>
+          <br />
+          <small>
+            Tags:
             <span class="modalTag" v-for="(tag, index) in modal_tags" :key="index" >
               {{tag}}
             </span>
-          </small><br /><br />
-          <button v-on:click="hide">閉じる</button>
+          </small>
+          <br />
+          <br />
+          <button v-on:click="hide">
+            閉じる
+          </button>
         </div>
       </modal>
-      <!---
-      <qaShow :qid='qid' :qajson='qajson'></qaShow>
-
-      <sModal :qa='qa'></sModal>
-      -->
     </div>
   </div>
 
@@ -62,8 +77,6 @@
 import config from "@/config";
 import Vue from 'vue'
 import axios from 'axios'
-import qaShow from '@/components/qa_show.vue'
-import sModal from '@/components/test/modal.vue'
 import virtualList from 'vue-virtual-scroll-list'
 /* eslint-enable */
 
@@ -73,8 +86,6 @@ export default {
     'sWord',
   ],
   components: {
-    //qaShow,
-    //sModal,
   },
   data () {
     return {
@@ -85,6 +96,7 @@ export default {
       modal_a : '',
       modal_s : '',
       modal_id : 0,
+      modal_tags: [],
       modal_view: false,
     }
   },
@@ -123,17 +135,14 @@ export default {
       this.modal_id = qa.params.modalqa.QID
       this.modal_tags = qa.params.modalqa.tags
     },
-
-
-
     setQID: function(qid) {
       this.qid = qid
     },
     show (qa) {
-      this.$modal.show('hello-world', {modalqa: qa})
+      this.$modal.show('qa-modal', {modalqa: qa})
     },
     hide () {
-      this.$modal.hide('hello-world');
+      this.$modal.hide('qa-modal');
     }
   }
 }

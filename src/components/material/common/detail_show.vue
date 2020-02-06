@@ -1,5 +1,5 @@
 <template>
-  <div class="Detail">
+  <div class="searchArea">
     <md-toolbar>
       <h4 class="md-title">
         FAQ Search in Vue Material
@@ -29,20 +29,18 @@ import axios from 'axios'
 /* eslint-enable */
 
 export default {
-  name: 'Detail',
+  name: 'searchArea',
   components: {
     dTable,
   },
   data () {
     return {
-      text: '',
       qid: '',
       qajson: {},
     }
   },
   methods: {
     setQID: function(){
-      this.sWord=this.qid
       console.log("set qid is ", this.qid)
       axios
         .get('/faq/qa/' + this.qid)
@@ -60,15 +58,6 @@ h1,h2 {
   white-space: pre-line;
   word-wrap: break-word;
 }
-a {
-  color: #42b983;
-}
-td {
-  text-align:center;
-  white-space: pre-line;
-  word-wrap: break-word;
-}
-
 .md-toolbar {
   text-align: left;
 }

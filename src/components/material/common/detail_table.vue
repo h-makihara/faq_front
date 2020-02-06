@@ -51,7 +51,7 @@ export default {
     return {
       dQuestion: '',
       dAnswer: '',
-      dUpdateAt: '3 minites age',
+      dUpdateAt: '3 minites ago',
       dTags: [],
     }
   },
@@ -76,7 +76,4 @@ td {
   word-wrap: break-word;
 }
 
-.md-toolbar {
-  text-align: left;
-}
 </style>
