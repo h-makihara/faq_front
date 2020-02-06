@@ -1,7 +1,7 @@
 <template>
   <div class="Detail">
     <md-toolbar>
-      <h4 class="md-title" style="flex: 1">
+      <h4 class="md-title">
         FAQ Search in Vue Material
       </h4>
     </md-toolbar>
@@ -24,7 +24,6 @@
 
 /* eslint-disable */
 import Vue from 'vue'
-import qaList from '@/components/material/table/qa_list.vue'
 import dTable from '@/components/material/common/detail_table.vue'
 import axios from 'axios'
 /* eslint-enable */
@@ -36,16 +35,9 @@ export default {
   },
   data () {
     return {
-      service : 'Mail',
       text: '',
       qid: '',
       qajson: {},
-      message : '',
-      dQuestion: '',
-      dAnswer: '',
-      dUpdateAt: '',
-      dTags: [],
-      json: {'QID': 1, 'test': 'hogehoge'},
     }
   },
   methods: {
@@ -56,7 +48,6 @@ export default {
         .get('/faq/qa/' + this.qid)
         .then(response => {this.qajson = response.data});
         console.log('type of data is ', typeof(this.qajson))
-      this.dAnswer = this.qajson.answer;
     }
   }
 }
