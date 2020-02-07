@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+# config files 
+config.js
+vue.config.js
+
+# lock files
+*.lock
+package-lock.json
