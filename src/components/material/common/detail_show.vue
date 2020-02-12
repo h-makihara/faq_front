@@ -2,7 +2,7 @@
   <div class="searchArea">
     <md-toolbar>
       <h4 class="md-title">
-        FAQ Search in Vue Material
+        Search by QID
       </h4>
     </md-toolbar>
 
@@ -15,6 +15,11 @@
                 v-on:keyup.enter="setQID()">
       </md-input>
     </md-field>
+    <md-toolbar>
+      <h4 class="md-title">
+        FAQ Detail
+      </h4>
+    </md-toolbar>
     <dTable :qajson='qajson'></dTable>
 
   </div>
@@ -39,6 +44,14 @@ export default {
       qajson: {},
     }
   },
+  created: function() {
+    console.log("set qid is ", this.$route.params.id)
+    axios
+      .get('/faq/qa/' + this.$route.params.qid)
+      .then(response => {this.qajson = response.data});
+      console.log('type of data is ', typeof(this.qajson))
+
+  },
   methods: {
     setQID: function(){
       console.log("set qid is ", this.qid)
@@ -46,6 +59,9 @@ export default {
         .get('/faq/qa/' + this.qid)
         .then(response => {this.qajson = response.data});
         console.log('type of data is ', typeof(this.qajson))
+      // QID を指定して遷移した場合、URLをQIDで書き換えることで
+      // COPY & PASTE で URL を持ち出す人に対処する
+      window.history.replaceState(null, null, this.qid);
     }
   }
 }

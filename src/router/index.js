@@ -71,10 +71,15 @@ const routes = [
     component: FAQCreate
   },
   {
-    path: '/detail',
+    path: '/detail/:qid',
     name: 'FAQ Detail',
     component: faqDetail
   },
+  {
+    path: '/detail/*',
+    name: 'no QID',
+    component: faqDetail
+  }
 ]
 /* eslint-disable */
 const router = new VueRouter({
