@@ -33,7 +33,6 @@
       <modal height="auto"
              :scrollable="true"
              name="qa-modal"
-             :draggable="true"
              :resizable="true"
              @before-open="beforeOpen">
         <div class="modal-header">
@@ -51,7 +50,7 @@
           </small>
           <br />
           <small>
-            QID: {{modal_id}}
+            QID: <router-link :to="{name:'FAQ Detail',params: {qid: this.modal_id}}">{{modal_id}}</router-link>
           </small>
           <br />
           <small>
@@ -61,6 +60,7 @@
             </span>
           </small>
           <br />
+          QIDのリンクをクリックすると、個別詳細ページへジャンプします
           <br />
           <button v-on:click="hide">
             閉じる
@@ -95,7 +95,7 @@ export default {
       modal_q : '',
       modal_a : '',
       modal_s : '',
-      modal_id : 0,
+      modal_id : '',
       modal_tags: [],
       modal_view: false,
     }

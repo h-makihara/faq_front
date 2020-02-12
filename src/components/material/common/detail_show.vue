@@ -45,12 +45,11 @@ export default {
     }
   },
   created: function() {
-    console.log("set qid is ", this.$route.params.id)
+    console.log("set qid is ", this.$route.params.qid)
     axios
       .get('/faq/qa/' + this.$route.params.qid)
       .then(response => {this.qajson = response.data});
       console.log('type of data is ', typeof(this.qajson))
-
   },
   methods: {
     setQID: function(){
