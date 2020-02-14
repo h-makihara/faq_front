@@ -11,9 +11,9 @@
 
               <md-card-header>
                 <div class="md-title">
-                  <h5>
+                  <div class="text-justify">
                     Q. {{qa.question}}
-                  </h5>
+                  </div>
                 </div>
                 <div class="md-subhead">
                   service: {{qa.service_name}}
@@ -21,16 +21,14 @@
               </md-card-header>
 
               <md-card-content>
-                <p class="card-text">
+                <div class="text-truncate">
                   A.<br />
                   {{ qa.answer }}
-                </p>
+                </div>
               </md-card-content>
 
-              <md-card-footer>
-                <small class="text-muted">
+              <md-card-footer class="text-muted">
                   Last updated 3 mins ago
-                </small>
               </md-card-footer>
           </div>
         </md-card>
@@ -57,7 +55,8 @@
           </small>
           <br />
           <small>
-            QID: <router-link :to="{name:'FAQ Detail',params: {qid: this.modal_id}}">{{modal_id}}</router-link>
+            <router-link :to="{name:'FAQ Detail',params: {qid: this.modal_id}}">QID : {{modal_id}}</router-link>
+            ←QIDのリンクをクリックすると、個別詳細ページへジャンプします
           </small>
           <br />
           <small>
@@ -67,7 +66,6 @@
             </span>
           </small>
           <br />
-          QIDのリンクをクリックすると、個別詳細ページへジャンプします
           <br />
           <button v-on:click="hide">
             閉じる
@@ -177,8 +175,20 @@ td {
 	border-bottom: 1px solid #ddd;
 }
 .md-card {
+  width: 320px;
+  display: inline-block;
   margin-bottom:10px;
   text-align: left;
+
+}
+
+.md-card-footer{
+  text-align: right;
+}
+.md-card-content{
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
 }
 
 .modalTag {

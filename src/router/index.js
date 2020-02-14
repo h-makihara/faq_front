@@ -13,8 +13,15 @@ import faqDetail from '../views/faq_detail.vue'
 import FAQCreate from '../views/faq_create.vue'
 
 Vue.use(VueRouter)
+
+// VModal
 import VModal from 'vue-js-modal'
 Vue.use(VModal)
+
+// vuetify
+import Vuetify from 'vuetify'
+import 'vuetify/dist/vuetify.min.css'
+Vue.use(Vuetify)
 
 // bootstrap
 import 'bootstrap'
