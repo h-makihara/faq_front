@@ -6,27 +6,34 @@
            v-for="(qa, index) in qajson"
            :key="index"
            style="width: 20rem;">
-        <div class="card-deck" v-on:click="show(qa)">
-          <div class="card-body">
-            <h5 class="card-header bg-transparent">
-              Q. {{qa.question}}
-            </h5>
-            <div class="card-body text-primary">
-              <p class="card-text">
-                A.<br />
-                {{ qa.answer }}
-              </p>
-            </div>
-            <div class="card-footer bg-transparent border-success">
-              <h6 class="card-title">
-                service: {{qa.service_name}}
-              </h6>
-              <small class="text-muted">
-                Last updated 3 mins ago
-              </small>
-            </div>
+        <md-card md-with-hover v-on:click="show(qa)">
+          <div @click="show(qa)">
+
+              <md-card-header>
+                <div class="md-title">
+                  <h5>
+                    Q. {{qa.question}}
+                  </h5>
+                </div>
+                <div class="md-subhead">
+                  service: {{qa.service_name}}
+                </div>
+              </md-card-header>
+
+              <md-card-content>
+                <p class="card-text">
+                  A.<br />
+                  {{ qa.answer }}
+                </p>
+              </md-card-content>
+
+              <md-card-footer>
+                <small class="text-muted">
+                  Last updated 3 mins ago
+                </small>
+              </md-card-footer>
           </div>
-        </div>
+        </md-card>
       </div>
 
       <!-- modal window -->
@@ -169,7 +176,7 @@ td {
 .modal-header {
 	border-bottom: 1px solid #ddd;
 }
-.card {
+.md-card {
   margin-bottom:10px;
   text-align: left;
 }
