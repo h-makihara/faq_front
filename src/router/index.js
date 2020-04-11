@@ -33,6 +33,9 @@ import 'vue-material/dist/vue-material.min.css'
 import 'vue-material/dist/theme/default.css'
 Vue.use(VueMaterial)
 
+// material-icons
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import 'vue-material-design-icons/styles.css'
 const routes = [
   {
     path: '/',

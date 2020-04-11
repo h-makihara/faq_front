@@ -6,32 +6,40 @@
            v-for="(qa, index) in qajson"
            :key="index"
            style="width: 20rem;">
-        <md-card md-with-hover v-on:click="show(qa)">
-          <div @click="show(qa)">
+        <div class="md-layout md-gutter md-alignment-center">
+          <div class="md-layout-item md-medium-hide">
+            <md-card md-with-hover v-on:click="show(qa)">
+              <div @click="show(qa)">
+                  <md-card-header>
+                    <div class="md-title">
+                      <div class="text-justify">
+                        <i class="material-icons">
+                          help_outline
+                        </i>
+                         {{qa.question}}
+                      </div>
+                    </div>
+                    <div class="md-subhead">
+                      service: {{qa.service_name}}
+                    </div>
+                  </md-card-header>
 
-              <md-card-header>
-                <div class="md-title">
-                  <div class="text-justify">
-                    Q. {{qa.question}}
-                  </div>
-                </div>
-                <div class="md-subhead">
-                  service: {{qa.service_name}}
-                </div>
-              </md-card-header>
+                  <md-card-content>
+                    <div class="text-truncate">
+                        <i class="material-icons md-10">
+                          error_outline
+                        </i>
+                      {{ qa.answer }}
+                    </div>
+                  </md-card-content>
 
-              <md-card-content>
-                <div class="text-truncate">
-                  A.<br />
-                  {{ qa.answer }}
-                </div>
-              </md-card-content>
-
-              <md-card-footer class="text-muted">
-                  Last updated 3 mins ago
-              </md-card-footer>
+                  <md-card-footer class="text-muted">
+                      Last updated 3 mins ago
+                  </md-card-footer>
+              </div>
+            </md-card>
           </div>
-        </md-card>
+        </div>
       </div>
 
       <!-- modal window -->
@@ -107,7 +115,10 @@ export default {
   },
   mounted: function () {
     axios
-      .get('/faq/list')
+      .get('/faq/list', {
+        word: this.sWord
+      }
+      )
       .then(response => (this.qajson = response.data))
   },
   methods :{
@@ -154,6 +165,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import 'vue-material/dist/theme/engine';
 h1,h2 {
   font-weight: normal;
   margin: 40px 0 0;
@@ -199,4 +211,10 @@ td {
   background: #f0f7ff;
   border: dashed 2px #5b8bd0;
 }
+
+.material-icons.md-10 {
+font-size: 18px;
+}
+
+
 </style>
