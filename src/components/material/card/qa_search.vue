@@ -22,6 +22,7 @@
       </md-button>
     </md-field>
 
+    <p>get word is {{ word }}</p>
 
     <!---
     <nav class="navbar navbar-light bg-light">
@@ -42,8 +43,87 @@
     </nav>
 
     --->
+    <div class="bv-example-row"
+         v-for="(qa, index) in qajson"
+         :key="index"
+         style="width: 20rem;">
+      <div class="md-layout md-gutter md-alignment-center">
+        <div class="md-layout-item md-medium-hide">
+          <md-card md-with-hover v-on:click="show(qa)">
+            <div @click="show(qa)">
+                <md-card-header>
+                  <div class="md-title">
+                    <div class="text-justify">
+                      <i class="material-icons">
+                        help_outline
+                      </i>
+                       {{qa.question}}
+                    </div>
+                  </div>
+                  <div class="md-subhead">
+                    service: {{qa.service_name}}
+                  </div>
+                </md-card-header>
 
+                <md-card-content>
+                  <div class="text-truncate">
+                      <i class="material-icons md-10">
+                        error_outline
+                      </i>
+                    {{ qa.answer }}
+                  </div>
+                </md-card-content>
+
+                <md-card-footer class="text-muted">
+                    Last updated 3 mins ago
+                </md-card-footer>
+            </div>
+          </md-card>
+        </div>
+      </div>
+    </div>
+
+    <!-- modal window -->
+    <modal height="auto"
+           :scrollable="true"
+           name="qa-modal"
+           :resizable="true"
+           @before-open="beforeOpen">
+      <div class="modal-header">
+        <h2>
+          Question : {{modal_q}}
+        </h2>
+      </div>
+      <div class="modal-body">
+        <p>
+          A: <br />
+          {{modal_a}}
+        </p>
+        <small>
+          Service: {{modal_s}}
+        </small>
+        <br />
+        <small>
+          <router-link :to="{name:'FAQ Detail',params: {qid: this.modal_id}}">QID : {{modal_id}}</router-link>
+          ←QIDのリンクをクリックすると、個別詳細ページへジャンプします
+        </small>
+        <br />
+        <small>
+          Tags:
+          <span class="modalTag" v-for="(tag, index) in modal_tags" :key="index" >
+            {{tag}}
+          </span>
+        </small>
+        <br />
+        <br />
+        <button v-on:click="hide">
+          閉じる
+        </button>
+      </div>
+    </modal>
+    <!--
     <qaList :sWord='sWord'></qaList>
+    -->
   </div>
 </template>
 
@@ -51,6 +131,7 @@
 
 /* eslint-disable */
 import Vue from 'vue'
+import axios from 'axios'
 import qaList from '@/components/material/card/qa_list.vue'
 /* eslint-enable */
 
@@ -58,7 +139,7 @@ import qaList from '@/components/material/card/qa_list.vue'
 export default {
   name: 'qaSearch',
   components: {
-    qaList,
+    //qaList,
   },
   data () {
     return {
@@ -66,17 +147,73 @@ export default {
       text: '',
       sWord: '',
       word: '',
+
+      qajson  : '',
+      qid     : '',
+      modalqa : '',
+      modal_q : '',
+      modal_a : '',
+      modal_s : '',
+      modal_id : '',
+      modal_tags: [],
     }
+  },
+  mounted: function () {
+    axios
+      .get('/faq/list', {
+        word: this.word
+      }
+      )
+      .then(response => (this.qajson = response.data))
   },
   methods: {
     setWord: function(){
       this.sWord=this.word
+    },
+    openModal () {
+      this.$modal.show({
+        template: `
+        <b>
+          {{modalqa}}
+        </b>
+        `,
+        props: [
+          'modalqa',
+          'modal_q',
+          'modal_a',
+          'modal_s',
+          'modal_id',
+        ]
+      },{
+        width: 300,
+      }, {
+        'before-open': this.beforeOpen,
+      })
+    },
+    beforeOpen (qa) {
+      // Set the opening time of the modal
+      this.modal_q = qa.params.modalqa.question,
+      this.modal_a = qa.params.modalqa.answer,
+      this.modal_s = qa.params.modalqa.service_name,
+      this.modal_id = qa.params.modalqa.QID
+      this.modal_tags = qa.params.modalqa.tags
+    },
+    setQID: function(qid) {
+      this.qid = qid
+    },
+    show (qa) {
+      this.$modal.show('qa-modal', {modalqa: qa})
+    },
+    hide () {
+      this.$modal.hide('qa-modal');
     }
-  }
+
+  },
 }
 </script>
 
 <style scoped lang="scss">
+@import 'vue-material/dist/theme/engine';
 h1,h2 {
   font-weight: normal;
   margin: 40px 0 0;
@@ -197,5 +334,40 @@ font-size: 35px;
       transform: translate3d(0,-101%,0);
     }
   }
+}
+.modal-header, .modal-body {
+	padding: 5px 25px;
+}
+.modal-header {
+	border-bottom: 1px solid #ddd;
+}
+.md-card {
+  width: 320px;
+  display: inline-block;
+  margin-bottom:10px;
+  text-align: left;
+
+}
+
+.md-card-footer{
+  text-align: right;
+}
+.md-card-content{
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -o-text-overflow: ellipsis;
+}
+
+.modalTag {
+  padding: 1px;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-bottom: 3px;
+  background: #f0f7ff;
+  border: dashed 2px #5b8bd0;
+}
+
+.material-icons.md-10 {
+font-size: 18px;
 }
 </style>
